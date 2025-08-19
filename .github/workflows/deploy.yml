@@ -1,4 +1,4 @@
-name: Blue Green Deployment
+name: Canary Deployment
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 env:
   SSH_HOST: ${{  secrets.SSH_SERVER_IP  }}
   SSH_USERNAME: ${{secrets.SSH_USERNAME}}
-  SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
