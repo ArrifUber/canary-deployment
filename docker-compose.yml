@@ -1,0 +1,25 @@
+services:
+  app_stable:
+    build:
+      context: ./stable
+      dockerfile: ./Dockerfile
+    container_name: app_stable
+    ports:
+      - 5001:5000
+  app_canary:
+    build:
+      context: ./canary
+      dockerfile: ./Dockerfile
+    container_name: app_canary
+    ports:
+      - 5002:5000
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:80"
+    depends_on:
+      - app_canary
+      - app_stable
