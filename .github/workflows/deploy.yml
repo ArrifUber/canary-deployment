@@ -34,7 +34,9 @@ jobs:
           context: ./deploy
           file: ./deploy/Dockerfile
           push: true
-          tags: ${{ env.DOCKER_USERNAME }}/canary:${{github.ref_name}}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/canary:${{github.ref_name}}
+            ${{ env.DOCKER_USERNAME }}/canary:latest
 
   deploy:
     runs-on: ubuntu-latest
