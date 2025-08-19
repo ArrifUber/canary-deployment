@@ -62,5 +62,5 @@ jobs:
             cd canary/
             echo "Running Script"
             chmod +x deploy.sh
-            sudo ./deploy.sh
+            sudo DOCKER_USERNAME=${{ env.DOCKER_USERNAME }} TAG=${{ github.ref_name }} ./deploy.sh
 

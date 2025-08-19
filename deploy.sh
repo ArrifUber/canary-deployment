@@ -2,8 +2,10 @@
 
 set -e
 
-export IMAGE=${{ secrets.DOCKER_USERNAME }}/canary:${{github.ref_name}}
+IMAGE="${DOCKER_USERNAME}/canary:${TAG}"
 
+
+echo "set image $IMAGE"
 sudo sed -i "s|image: arifbudianto/.*|image: ${IMAGE}|" docker-compose.yml
 
 current=$(cat current.txt)
